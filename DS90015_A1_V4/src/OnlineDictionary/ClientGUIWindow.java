@@ -34,11 +34,15 @@ public class ClientGUIWindow {
         JButton query = new JButton("Query");
         JButton update = new JButton("Update");
 
+        JButton close = new JButton("Close Window");
+
         //add buttons to the panel
         buttonPanel.add(add);
         buttonPanel.add(remove);
         buttonPanel.add(query);
         buttonPanel.add(update);
+
+        buttonPanel.add(close);
 
         //add button action
         //add
@@ -91,6 +95,10 @@ public class ClientGUIWindow {
             else{
                 labelGeneralMessage.setText("Error: please input the word you want to add with its meaning");
             }
+        });
+
+        close.addActionListener(e -> {
+            System.exit(0);
         });
 
         //add text field
@@ -168,5 +176,6 @@ public class ClientGUIWindow {
     public static void main(String[] args) { //main
         new ClientGUIWindow();
     }
+
 
 }

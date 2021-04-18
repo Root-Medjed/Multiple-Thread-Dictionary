@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>OnlineDictionary</OriginalElement>
+  <nodes>
+    <node x="62.500000000000014" y="104.0">OnlineDictionary.OnlineDicServer</node>
+    <node x="66.99999999999999" y="0.0">OnlineDictionary.DictJSON</node>
+    <node x="0.0" y="297.0">OnlineDictionary.MultithreadServer</node>
+    <node x="0.0" y="640.0">OnlineDictionary.OnlineDictClientSide</node>
+    <node x="392.0" y="0.0">OnlineDictionary.ClientGUIWindow</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="OnlineDictionary.OnlineDicServer" target="OnlineDictionary.MultithreadServer">
+      <point x="27.75" y="71.5" />
+      <point x="201.25" y="272.0" />
+      <point x="216.875" y="272.0" />
+      <point x="43.375" y="-149.0" />
+    </edge>
+    <edge source="OnlineDictionary.MultithreadServer" target="OnlineDictionary.OnlineDicServer">
+      <point x="-43.375" y="-149.0" />
+      <point x="130.125" y="272.0" />
+      <point x="145.75" y="272.0" />
+      <point x="-27.75" y="71.5" />
+    </edge>
+    <edge source="OnlineDictionary.OnlineDicServer" target="OnlineDictionary.DictJSON">
+      <point x="-2.8421709430404007E-14" y="-71.5" />
+      <point x="0.0" y="27.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.711484593837535" x="313.0" y="347.0" />
+  <SelectedNodes>
+    <node>OnlineDictionary.OnlineDicServer</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

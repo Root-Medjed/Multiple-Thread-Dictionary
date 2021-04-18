@@ -17,12 +17,12 @@ public class OnlineDicServer { //TCP
     //public ServerSocket welcomeSocket;
     //private Object DictionaryServer;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         OnlineDicServer dictServer = new OnlineDicServer(); //create an object then
         dictServer.awakeServer(); //call server method below
     }
 
-    public void awakeServer() {
+    public void awakeServer() throws IOException {
 
         //create server socket for listening
         //ServerSocketFactory factory = ServerSocketFactory.getDefault();

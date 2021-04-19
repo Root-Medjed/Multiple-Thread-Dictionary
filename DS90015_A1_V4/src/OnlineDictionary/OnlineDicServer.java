@@ -1,3 +1,10 @@
+/**
+ * @author: Tuohuang Li
+ * @ID: 1205166
+ * @EMAIL: tuohuangl@student.unimelb.edu.au
+ * @2021
+ */
+
 package OnlineDictionary;
 
 import java.io.IOException;
@@ -9,6 +16,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 //import javax.net.ServerSocketFactory;
 
+
 public class OnlineDicServer { //TCP
 
     private static int port = 6666;
@@ -17,11 +25,20 @@ public class OnlineDicServer { //TCP
     //public ServerSocket welcomeSocket;
     //private Object DictionaryServer;
 
+    /**
+     *
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
         OnlineDicServer dictServer = new OnlineDicServer(); //create an object then
         dictServer.awakeServer(); //call server method below
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     public void awakeServer() throws IOException {
 
         //create server socket for listening
@@ -78,7 +95,5 @@ public class OnlineDicServer { //TCP
     }
 }
 
-
-//Run Server on mundroo.cs.mu.oz.au????
 
 //reference: http://tutorials.jenkov.com/java-multithreaded-servers/thread-pooled-server.html

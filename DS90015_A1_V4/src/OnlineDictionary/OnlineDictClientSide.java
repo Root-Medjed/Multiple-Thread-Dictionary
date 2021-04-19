@@ -1,3 +1,10 @@
+/**
+ * @author: Tuohuang Li
+ * @ID: 1205166
+ * @EMAIL: tuohuangl@student.unimelb.edu.au
+ * @2021
+ */
+
 package OnlineDictionary;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

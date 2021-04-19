@@ -1,3 +1,10 @@
+/**
+ * @author: Tuohuang Li
+ * @ID: 1205166
+ * @EMAIL: tuohuangl@student.unimelb.edu.au
+ * @2021
+ */
+
 package OnlineDictionary;
 
 import org.json.simple.JSONObject;
@@ -24,6 +31,14 @@ public class MultithreadServer implements Runnable {
     Socket client=null;
     int clientNumber;
 
+    /**
+     *
+     * @param client
+     * @param count
+     * @param server
+     * @throws IOException
+     */
+
     MultithreadServer (Socket client, int count ,OnlineDicServer server) throws IOException {
 
         this.client=client;
@@ -32,6 +47,9 @@ public class MultithreadServer implements Runnable {
 
     }
 
+    /**
+     * run method
+     */
     @Override
     public void run() {
         try {
@@ -55,7 +73,7 @@ public class MultithreadServer implements Runnable {
 
                 }else if(commands.length == 2){  //eg. commands = query,xml
 
-                    String word = commands[1];
+                    String word = commands[1].toLowerCase();
                     if (command.equals("query")){
                         output.write(query(word));
                         output.newLine();
@@ -71,8 +89,8 @@ public class MultithreadServer implements Runnable {
                         output.flush();
                     }
                 }else if(commands.length == 3){  //eg. commands = add, apple, a fruit
-                    String word = commands[1];
-                    String meaning = commands[2];
+                    String word = commands[1].toLowerCase();
+                    String meaning = commands[2].toLowerCase();
                     if (command.equals("add")){
                         output.write(add(word ,meaning));
                         output.newLine();
@@ -102,6 +120,11 @@ public class MultithreadServer implements Runnable {
         }
     }
 
+    /**
+     *
+     * @param word
+     * @return
+     */
     private String query(String word){
 
         String result = null;
@@ -114,19 +137,19 @@ public class MultithreadServer implements Runnable {
             }else{
                 result = "Word not found, try again!";
             }
-        }  catch (FileNotFoundException e) {
-            // e.printStackTrace();
-            System.out.println("Server having trouble loading dictionary file...");
-        } catch (IOException e) {
-            // e.printStackTrace();
+        }  catch (IOException e) {
             System.out.println("I/O error happened on server side!");
         } catch (ParseException e) {
-            // e.printStackTrace();
             System.out.println("Parse error on server side!");
         }
         return result;
     }
 
+    /**
+     *
+     * @param word
+     * @return
+     */
     private synchronized String remove(String word){
 
         String result = null;
@@ -152,9 +175,7 @@ public class MultithreadServer implements Runnable {
             else {
                 result = "Oops, some unknown error happened";
             }
-        }  catch (FileNotFoundException e) {
-            System.out.println("Couldn't load file");
-        } catch (IOException e) {
+        }  catch (IOException e) {
             // e.printStackTrace();
             System.out.println("I/O error happened on server side!");
         } catch (ParseException e) {
@@ -164,6 +185,12 @@ public class MultithreadServer implements Runnable {
         return result;
     }
 
+    /**
+     *
+     * @param word
+     * @param meaning
+     * @return
+     */
     @SuppressWarnings("unchecked")
     private synchronized String add(String word, String meaning){
 
@@ -188,9 +215,7 @@ public class MultithreadServer implements Runnable {
             else {
                 result = "Ummm...Unknown error happened...Please try again!";
             }
-        }  catch (FileNotFoundException e) {
-            System.out.println("Server having trouble loading dictionary file...");
-        } catch (IOException e) {
+        }  catch (IOException e) {
             System.out.println("I/O error happened on server side!");
         } catch (ParseException e) {
             System.out.println("Parse error on server side!");
@@ -198,6 +223,13 @@ public class MultithreadServer implements Runnable {
         return result;
     }
 
+    /**
+     *
+     * @param word
+     * @param meaning
+     * @return
+     */
+    @SuppressWarnings("unchecked")
     private synchronized String update (String word, String meaning){
 
         String result = null;
@@ -227,9 +259,7 @@ public class MultithreadServer implements Runnable {
             else {
                 result = "Ummm...Unknown error happened...Please try again!";
             }
-        }  catch (FileNotFoundException e) {
-            System.out.println("Server having trouble loading dictionary file...");
-        } catch (IOException e) {
+        }  catch (IOException e) {
             System.out.println("I/O error happened on server side!");
         } catch (ParseException e) {
             System.out.println("Parse error on server side!");
@@ -237,17 +267,26 @@ public class MultithreadServer implements Runnable {
         return result;
     }
 
+    /**
+     *
+     * @return
+     * @throws IOException
+     * @throws ParseException
+     */
     public JSONObject loadDictData() throws IOException, ParseException {
         return (JSONObject) parser.parse(new FileReader("dictionary.json"));
     }
 
+    /**
+     *
+     * @param dictionary
+     * @throws IOException
+     */
     public void printToDictionary(JSONObject dictionary) throws IOException {
         FileWriter file = new FileWriter("dictionary.json", false);
         try {
             file.write(dictionary.toJSONString());
             file.flush();
-        } catch (FileNotFoundException e) {
-            System.out.println("Oops! file could not found!");
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Could not load file");

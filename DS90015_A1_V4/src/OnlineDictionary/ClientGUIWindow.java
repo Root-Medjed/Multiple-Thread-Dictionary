@@ -1,3 +1,9 @@
+/**
+ * @author: Tuohuang Li
+ * @ID: 1205166
+ * @EMAIL: tuohuangl@student.unimelb.edu.au
+ * @2021
+ */
 package OnlineDictionary;
 
 import javax.swing.*;
@@ -166,6 +172,7 @@ public class ClientGUIWindow {
         catch (UnknownHostException e)
         {
             e.printStackTrace();
+            System.out.println("Error! Unknown host!");
         }
         catch (IOException e)
         {
